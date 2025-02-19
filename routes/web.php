@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,9 +19,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/admin/users', [UserController::class, 'index'])->name('dashboard.users');
+Route::get('/admin/categories', [CategoryController::class, 'index'])->name('dashboard.categories');
+Route::get('/admin/categories/create', [CategoryController::class, 'create'])->name('categories.create');
+Route::post('/admin/categories/create', [CategoryController::class, 'store'])->name('categories.store');
+Route::get('/admin/categories/{id}/update', [CategoryController::class, 'edit'])->name('dashboard.edit');
+Route::put('/admin/categories/update/{id}', [CategoryController::class, 'update'])->name('categories.update');
+Route::delete('/admin/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
+
+Route::get('/admin/dashboard', function () {
+    return view('/dashboard/dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

@@ -10,13 +10,13 @@
             </div>
 
         </div>
-        <div class="w-max space-y-4">
+        <div class="w-full space-y-4">
             <div class="w-max">
                 <h1 class="text-2xl text-white font-bold">
                     Categories list
                 </h1>
             </div>
-            <ul class="flex gap-3">
+            <ul class="flex flex-wrap gap-3">
                 @foreach($categories as $category)
                 <li class="py-5 px-8 bg-white rounded-md flex flex-col gap-2 justify-center items-center text-gray-950 font-medium">
                     <span class="text-xl">{{ $category->name }}</span>
@@ -38,6 +38,9 @@
                 </li>
                 @endforeach
             </ul>
+            <div class="w-full pt-7">
+                {{ $categories->links() }}
+            </div>
         </div>
     </div>
 

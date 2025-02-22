@@ -9,7 +9,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::paginate(8);
         return view('dashboard.categories', compact('categories'));
     }
     public function create() {

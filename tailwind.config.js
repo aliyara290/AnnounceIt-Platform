@@ -13,6 +13,7 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                unbounded: ['Unbounded', 'sans-serif'], // Added Unbounded font
             },
         },
     },
